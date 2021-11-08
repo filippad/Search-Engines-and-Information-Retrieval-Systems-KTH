@@ -1,0 +1,65 @@
+## How to compile and run
+javac -d classes -encoding UTF-8 ir/*.java
+sh run_search_engine.sh
+sh run_persistent.sh
+find . -type f | xargs grep -l "money"
+
+## Compile and run KGram
+javac -cp . -d classes -encoding UTF-8 ir/KGramIndex.java
+java -cp classes ir.KGramIndex -f kgram_test.txt -p patterns.txt -k 3 -kg "ove mea"
+
+
+-------------- Task 1.5 ---------------
+
+## Label the documents
+
+1 data/davisWiki/Elaine_Kasimatis.f 3 - It is about a mathematics program graduate.
+1 data/davisWiki/Events_Calendars.f 0 - Only urls.
+1 data/davisWiki/Student_Organizations.f 1 - Points to graduation topic but no further information.
+1 data/davisWiki/Quantitative_Biology_and_Bioinformatics.f 2 - Related to program graduate and mathematics (bio-mathematics)
+1 data/davisWiki/Private_Tutoring.f 3 - Provide information needed if one wants to hire a private tutor in order to graduate a program in maths
+1 data/davisWiki/Economics.f 1 - It does point to economics which is an application of maths but does not really related to the topic of graduation in maths
+1 data/davisWiki/Biological_Systems_Engineering.f 1 - Simliar to the above but biology instead of economics
+1 data/davisWiki/UC_Davis_English_Department.f 0 - Mathematics is mentioned but it is about experiences of students who has studied in this apartment which does not relate to maths.
+1 data/davisWiki/Computer_Science.f 1 - It does point to computer science which is an application of maths but does not really related to the topic of graduation in maths
+1 data/davisWiki/What_I_Wish_I_Knew...Before_Coming_to_UC_Davis_Entomology.f 2 - Even though it does not discuss much about maths but a lot about the topic of graduating program
+1 data/davisWiki/Evelyn_Silvia.f 1 - About a person who graduated mathematics
+1 data/davisWiki/Fiber_and_Polymer_Science.f 1 -
+1 data/davisWiki/UCD_Honors_and_Prizes.f
+1 data/davisWiki/document_translated.f
+1 data/davisWiki/Statistics.f
+1 data/davisWiki/University_Departments.f
+1 data/davisWiki/ECE_Course_Reviews.f
+1 data/davisWiki/Hydrology.f
+2 data/davisWiki/MattHh.f
+2 data/davisWiki/Candidate_Statements.f
+2 data/davisWiki/Wildlife%2C_Fish%2C_and_Conservation_Biology.f
+2 data/davisWiki/Mathematics.f
+
+## Precision: the fraction of retrieved documents that are relevant
+
+precision = good/retrieved = (relevant and retrieved) / retrieved = 16/22 = 0.7273
+
+
+## Recall: the fraction of relevant documents that are retrieved
+
+recall = good / relevant = (relevant and retrieved) / relevant = 16/100 = 0.16
+
+-------------- Task 3.3 ---------------
+
+!!! Remember to uncomment printing for "ve" and "th he" in Engine
+
+-------------- Task 3.4 ---------------
+
+## How would you interpret the meaning of the query "historic* humo*r"?
+
+Find all docs containing any word beginning “historic”, and any word beginning with “humo”
+ending in “r”
+
+## Why could the word "revenge" be returned by a bigram index in return to a query "re*ve"?
+
+Although it does not end in "ve" but it contains both kGrams "re" and "ve". Intersection
+does not take care of what the word has to end with.
+
+## How could this problem of false positives be solved?
+

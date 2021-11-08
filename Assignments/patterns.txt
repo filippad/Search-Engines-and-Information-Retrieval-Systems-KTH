@@ -1,0 +1,59 @@
+//
+//  Information retrieval course
+//  First version: Johan Boye 2016
+//
+//  Student: Filippa Modigh, Jan 2020
+//
+// In this file you can put your regular expressions
+// for matching non-standard words (like mail addresses).
+//
+// As you have probably already understood, lines beginning
+// with "//" are comments.
+
+// URL addresses
+http\:\/\/host((\:\d+)?\/path((\?search)?(\#fragment)?)?\/?)?
+https?\:\/\/[a-zA-Z\-\.\_\&\%\~\d]+(\.[a-zA-Z\d\-\.\_\&\%\~\']+)?\.(org|ch|com|net|01|edu)(\/([a-z\d\?\+\,\%\.\#\_\&\=\-\@\!\:\']*))*
+
+// IP-address
+\d{3}(\.\d{3}){3}
+
+// Hyphenated compounded words
+[a-zA-Z]+[\’\-\'][a-zA-Z]+
+
+
+// Emails
+[a-zA-Z]+\d*\_*(\.*[a-zA-Z\d])*@((csc\.)?(kth.se)|(nisse\.gov)|(sbcglobal\.net)|(public\.com)|(a\.b\.c\.se)|(williams\.edu))
+
+// e.g.
+e\.g\.
+
+// Section indexes
+(\d+\.)+\d+
+
+// Twenty-four seven
+\d+/\d+
+
+// Phone numbers, dolars
+\d+\-\d+(\-\d+)*
+((\+)|(\$))\d+
+
+// Numbers with thousands separators
+\d+\,\d+(\,\d+)*
+
+// Coded numbers
+\d+\-xxxx
+
+//
+//[a-zA-Z]+\'(s|re|t|ll|d)
+\'em
+
+// Time
+\d\d\:\d\d:\d\d
+
+// a.d. & b.c.
+a\.d\.
+b\.c\.
+p\.m\.
+
+// File names with extension
+[a-zA-Z\d]+(\_[a-zA-Z\d]+)*\.(ppt|doc|xlsx)

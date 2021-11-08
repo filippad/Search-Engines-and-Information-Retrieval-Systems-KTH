@@ -1,0 +1,75 @@
+The idea is to prefer precision to recall since it's believed that user would prefer to not have
+too much irrelevant information rather than missing some of the relevant content.
+
+//---------------------------------- ** -------------------------------------//
+
+Query: mathematics graduate course
+Number of results: 18
+1 data/davisWiki/Quantitative_Biology_and_Bioinformatics.f 1
+1 data/davisWiki/Private_Tutoring.f 2
+1 data/davisWiki/Economics.f 1
+1 data/davisWiki/UC_Davis_English_Department.f 0
+1 data/davisWiki/Computer_Science.f 1
+1 data/davisWiki/What_I_Wish_I_Knew...Before_Coming_to_UC_Davis_Entomology.f 2
+1 data/davisWiki/Trivia_Nights.f 0
+1 data/davisWiki/Fiber_and_Polymer_Science.f 1
+1 data/davisWiki/BrandonBarrette.f 0
+1 data/davisWiki/Teaching_Assistants.f 0
+1 data/davisWiki/UCD_Honors_and_Prizes.f 2
+1 data/davisWiki/document_translated.f 0
+1 data/davisWiki/Statistics.f 3
+1 data/davisWiki/ECE_Course_Reviews.f 2
+1 data/davisWiki/Hydrology.f 0
+1 data/davisWiki/MattHh.f 1
+1 data/davisWiki/Mathematics.f 3
+1 data/davisWiki/PatrickDragon.f 0
+
+precision = good/retrieved = (relevant and retrieved) / retrieved = 11/18 = 0.6111
+recall = good / relevant = (relevant and retrieved) / relevant = 11/100 = 0.11
+
+
+
+//---------------------------------- ** -------------------------------------//
+Query: mathematics education graduate UC Davis - OPTIMAL?
+Number of results: 12
+
+1 data/davisWiki/Private_Tutoring.f 2
+1 data/davisWiki/Economics.f 1
+1 data/davisWiki/UC_Davis_English_Department.f 0
+1 data/davisWiki/Computer_Science.f 1
+1 data/davisWiki/What_I_Wish_I_Knew...Before_Coming_to_UC_Davis_Entomology.f 2
+1 data/davisWiki/Teaching_Assistants.f 0
+1 data/davisWiki/UCD_Honors_and_Prizes.f 2
+1 data/davisWiki/Statistics.f 3
+1 data/davisWiki/ECE_Course_Reviews.f 2
+1 data/davisWiki/Hydrology.f 0
+1 data/davisWiki/MattHh.f 1
+1 data/davisWiki/Mathematics.f 3
+
+## Precision: the fraction of retrieved documents that are relevant
+
+precision = good/retrieved = (relevant and retrieved) / retrieved = 9/12 = 0.75
+
+## Recall: the fraction of relevant documents that are retrieved
+
+recall = good / relevant = (relevant and retrieved) / relevant = 9/100 = 0.09
+
+//---------------------------------- ** -------------------------------------//
+Query: mathematics education graduate UC Davis
+Number of results: 2
+
+1 data/davisWiki/Private_Tutoring.f 2
+1 data/davisWiki/UCD_Honors_and_Prizes.f 2
+
+## Precision: the fraction of retrieved documents that are relevant
+
+precision = good/retrieved = (relevant and retrieved) / retrieved = 2/2 = 1
+
+## Recall: the fraction of relevant documents that are retrieved
+
+recall = good / relevant = (relevant and retrieved) / relevant = 2/100 = 0.02
+
+//---------------------------------- ** -------------------------------------//
+
+## Why can we not simply set the query to be the entire information need description?
+---> because it will generate some irrelevant documents which lower the precision of the search results.
