@@ -1,0 +1,368 @@
+---------------Hur extrahera mål från regleringsbrev?--------------
+
+Sök i html-filen efter:
+<h3 .*>Mål</h3>
+parsa sedan vidare till nästkommande <p> som innehåller text
+
+Har sökt stickprov från olika år där flera stämmer med denna strukur. Se expempel 2.
+
+Vissa regleringsbrev, till exempel till Länsstyrelser, saknar dock mål. De innehåller endast låneramar (budgetgrejer).
+
+Vissa regleringsbrev har istället "Mål och återrapporteringskrav" som rubrik.
+Hittade också en: <h2>Övriga mål och återrapporteringskrav</h2> 2006_Boverket
+Se exempel 3.
+
+--------------------Exempel 1: Regleringsbrev 2006_Affärsnätverket svenska kraftnät -----------
+
+<div style="margin-top:5px;" xmlns="http://www.w3.org/1999/xhtml">
+  <table class="utanRam">
+    <tr>
+      <td style="width:77px;">
+        <h2>1</h2>
+      </td>
+      <td style="width:423px;">
+        <h2>Verksamhetsstyrning</h2>
+      </td>
+    </tr>
+  </table>
+</div>
+<div style="margin-top:0px;" xmlns="http://www.w3.org/1999/xhtml">
+  <table class="utanRam">
+    <tr>
+      <td style="width:77px;">
+        <h2>1.1</h2>
+      </td>
+      <td style="width:423px;">
+        <h2>Politikområde Energipolitik</h2>
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="Start2mm" xmlns="http://www.w3.org/1999/xhtml">
+  <h3 class="italic">Mål</h3>
+</div>
+<div class="Start2mm" xmlns="http://www.w3.org/1999/xhtml">
+  <p xmlns="" xmlns:sql="urn:schemas-microsoft-com:xml-sql">
+    Den svenska energipolitikens mål är att på kort och lång sikt trygga
+    tillgången på el och annan energi på med omvärlden konkurrenskraftiga
+    villkor. Energipolitiken skall skapa villkoren för en effektiv och hållbar
+    energianvändning och en kostnadseffektiv svensk energiförsörjning med låg
+    negativ inverkan på hälsa, miljö och klimat samt underlätta omställningen
+    till ett ekologiskt uthålligt samhälle. Härigenom främjas en god ekonomisk
+    och social utveckling i hela Sverige.
+  </p>
+  <p xmlns="" xmlns:sql="urn:schemas-microsoft-com:xml-sql">
+    Energipolitiken skall bidra till ett breddat energi-, miljö- och
+    klimatsamarbete i Östersjöregionen.
+  </p>
+  <p xmlns="" xmlns:sql="urn:schemas-microsoft-com:xml-sql">
+    Övriga relevanta mål för energipolitiken framgår av riksdagens beslut i
+    juni 2002 (prop. 2001/02:143, bet. 2001/02:NU17, rskr. 2001/02:317).
+  </p>
+</div>
+
+
+--------------------Exempel 2: regleringsbrev---------------------
+
+<div style="margin-top:5px;" xmlns="http://www.w3.org/1999/xhtml">
+  <table class="utanRam">
+    <tr>
+      <td style="width:77px;">
+        <h2>1.1.3.1</h2>
+      </td>
+      <td style="width:423px;">
+        <h2>Verksamhetsgren Branschkontakter</h2>                   <-- detta är rubriken för målet. Spara?
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="Start2mm" xmlns="http://www.w3.org/1999/xhtml">
+  <h3 class="italic">Mål</h3>                                       <-- Här står nyckelordet "mål"
+</div>
+<div class="Start2mm" xmlns="http://www.w3.org/1999/xhtml">
+  <p xmlns="" xmlns:sql="urn:schemas-microsoft-com:xml-sql">
+    Kontakter med branschen ger synliga resultat.                   <-- detta är texten vi vill spara som mål
+  </p>
+</div>
+
+--------Exempel 3: regleringsbrev 2009 Försvarets radioanstalt---------
+
+************************ BEGIN output av maalAaterrapportering delavsnitt med uppdrag.xslt ************************
+-->
+<div style="margin-top:5px;" xmlns="http://www.w3.org/1999/xhtml">
+  <table class="utanRam">
+    <tr>
+      <td style="width:77px;">
+        <h2>1</h2>
+      </td>
+      <td style="width:423px;">
+        <h2>Mål och återrapporteringskrav</h2>                <--- Rubriken "Mål och återraporteringskrav" att söka efter
+      </td>
+    </tr>
+  </table>
+</div>
+<h3 class="italic" xmlns="http://www.w3.org/1999/xhtml">
+  1. Rapportproduktion                                        <---- Rubrik för målet. Spara?
+</h3>
+<div class="Start2mm" xmlns="http://www.w3.org/1999/xhtml">
+  <p xmlns="">
+    Försvarets radioanstalt ska genom sin underrättelserapportering           <---- Mål som ska sparas
+    tillgodose regeringens och övriga uppdragsgivares behov av underrättelser.
+  </p>
+  <p xmlns="">
+    Verksamheten ska vara förankrad i och styrd av uppdragsgivarens           <---- Mål som ska sparas
+    behov och bedrivas så att den snabbt kan anpassas till
+    händelseutvecklingen i omvärlden.
+  </p>
+</div>
+<h3 class="italic" xmlns="http://www.w3.org/1999/xhtml">
+  Återrapportering
+</h3>
+<div class="Start2mm" xmlns="http://www.w3.org/1999/xhtml">
+  <p xmlns="">
+    Försvarets radioanstalt ska redovisa vilka uppdragsgivare                 <---- krav på hur målet ska rapporteras.
+    myndigheten rapporterat till och i vilken utsträckning uppgifterna
+    har kunnat lösas. Redovisningen ska även visa resursåtgången uppdelad
+    i uppdragsgivarkategorier samt en jämförelse över resursåtgång från
+    tidigare år. Därutöver ska en detaljerad redovisning avseende
+    måluppfyllnad av den av regeringen beslutade inriktningen av
+    försvarsunderrättelseverksamheten lämnas.
+  </p>
+</div>
+
+---------------Hur extrahera uppdrag från regleringsbrev?--------------
+
+<h2>Uppdrag</h2> se exempel 4.
+
+---------------Exempel 4: 2006_Boverket regrelingsbrev----------------
+***************** BEGIN output av uppdrag delavsnitt med uppdrag.xslt ************************
+-->
+<div style="margin-top:5px;" xmlns="http://www.w3.org/1999/xhtml">
+  <table class="utanRam">
+    <tr>
+      <td style="width:77px;">
+        <h2>
+          4
+        </h2>
+      </td>
+      <td style="width:423px;">
+        <h2>
+          Uppdrag                                                 <--- Nyckelord uppdrag
+        </h2>
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="Start2mm" xmlns="http://www.w3.org/1999/xhtml">
+  <p xmlns="">
+    1. Boverket skall, i samverkan med länsstyrelserna, kartlägga     <----Uppdrag att spara
+    och utvärdera statens samlade roll och ansvar för att genom
+    uppsikt och tillsyn säkerställa dels att samhällskraven i
+    plan- och bygglagen (1987:10) tillgodoses i kommunernas fysiska
+    planering, dels att tillämpningen av lagen blir enhetlig.
+    Boverket skall redovisa förslag till åtgärder och förtydliganden
+    som bedöms angelägna samt vilka åtgärder Boverket avser att vidta
+    för att tillämpningen skall motsvara lagstiftningens syfte och
+    intention. Det är särskilt angeläget att Boverket redovisar hur
+    länsstyrelserna samverkar med kommunerna i deras planläggning
+    och planprocess samt vilket stöd länsstyrelserna behöver av
+    Boverket för att fullgöra sina uppgifter enligt plan- och
+    bygglagen. Redovisningen skall bland annat innefatta
+    länsstyrelsernas ansvar för att ta tillvara och göra
+    helhetsbedömningar och sammanvägningar av olika nationella mål
+    och statliga intressen i kommunernas planering samt för att
+    därvid tillhandahålla planeringsunderlag. Som ett underlag för
+    uppdraget skall rapportering från länsstyrelserna ingå. Uppdraget
+    skall redovisas till regeringen senast den 30 juni 2007.
+  </p>
+  <p xmlns="">
+    2. Boverket skall, efter samråd med berörda centrala myndigheter,     <--Uppdra att spara. Osv nedåt
+    ge ytterligare stöd och vägledning till länsstyrelserna och
+    kommunerna i deras arbete med delmål 1 under miljökvalitetsmålet
+    God bebyggd miljö om planeringsunderlag för fysisk planering och
+    samhällsbyggande. Syftet med uppdraget är att underlätta och
+    påskynda myndigheternas arbete med planeringsunderlaget.
+    Uppdraget, inklusive genomförda åtgärder och erfarenheter från
+    dessa, skall redovisas till regeringen senast den 30 september 2007.
+  </p>
+  <p xmlns="">
+    3.Boverket skall inhämta och redovisa uppgifter om uppskattade
+    kostnader vid berörda myndigheter för arbetet med åtgärder för
+    att uppnå miljökvalitetsmålet God bebyggd miljö. Redovisningen
+    skall så långt som möjligt ske per delmål och i möjligaste mån
+    innehålla en bedömning av den effekt de olika åtgärderna har haft.
+    En sammanställning för respektive 2004, 2005 och 2006 skall
+    redovisas till Miljömålsrådet vid Naturvårdsverket enligt rådets
+    riktlinjer senast den 30 september 2007.
+  </p>
+  <p xmlns="">
+    4. Boverket skall, efter samråd med Naturvårdsverket och
+    Folkhälsoinstitutet, utveckla modeller och vägledning som syftar
+    till att, inom ramen för fysisk planering på kommunal nivå, säkra
+    tillgång till bostadsnära natur. Utgångspunkt bör tas i den
+    erfarenhet som redan finns från flera kommuner och landsting samt
+    i det arbete som redan pågår inom Boverket om bostadsnära natur.
+    Målet bör vara att modellerna och vägledningen kan tillämpas av
+    kommunerna i den fysiska planeringen. Uppdraget skall redovisas
+    till regeringen senast den 1 juni 2007.</p><p xmlns="">5. Boverket
+    skall i samverkan med Lantmäteriverket och Sveriges Kommuner och
+    Landsting samt med stöd av bland annat ett urval länsstyrelser och
+    kommuner utveckla de idéer som redovisas i rapporten "Hur
+    informationen i detaljplaneprocessen kan bli bättre och effektivare
+    - förstudierapport över ett regeringsuppdrag". Syftet med uppdraget
+    är att skapa förutsättningar för en nationellt harmoniserad digital
+    hantering av detaljplaneprocessen, i kommunerna såväl som i utbytet
+    av detaljplaneinformation mellan olika aktörer i samhället.
+    I uppdraget ligger att redovisa erfarenheter av olika kommuners och
+    övrigas utveckling av en digital detaljplaneprocess och hur dessa
+    erfarenheter avses tas till vara för att främja en nationellt harmoniserad
+    hantering. Vidare ingår i uppdraget att redovisa hur Boverkets
+    detaljplanehandbok kan utvecklas för att kunna bidra till införandet
+    av en sådan process. Uppdraget skall redovisas till regeringen senast
+    den 30 juni 2007.
+  </p>
+  <p xmlns="">
+    6. Boverket skall fortsätta informationsinsatserna i syfte att öka
+    kännedomen hos fastighetsägare och andra viktiga aktörer om reglerna
+    för undanröjande av enkelt avhjälpta hinder för förbättrad tillgänglighet.
+    Informationen skall medverka till att målet om att alla enkelt avhjälpta
+    hinder är undanröjda till 2010 skall kunna uppnås. Boverket skall till
+    regeringen redovisa vilka åtgärder som verket har vidtagit senast den
+    15 september 2006.
+  </p>
+  <p xmlns="">
+    7. Boverket skall redovisa hur trångboddheten har utvecklats över tiden
+    och hur trångboddheten varierar mellan olika grupper. I redovisningen av
+    följderna av trångboddhet för olika grupper bör särskilt barn- och
+    jämställdhetsperspektivet uppmärksammas. Boverket skall också analysera
+    orsakerna bakom trångboddheten. Uppdraget skall redovisas till regeringen
+    senast 1 september 2006.
+  </p>
+  <p xmlns="">
+    8. Boverket skall, i samråd med Statens energimyndighet, ta fram en plan
+    för uppföljning och utvärdering av stöden för konvertering från direktverkande
+    elvärme respektive oljeuppvärmning i bostadshus. En utgångspunkt skall vara
+    planen för uppföljning och utvärdering av 1997 års energipolitiska program.
+    Planen skall redovisas till regeringen senast den 15 juni 2006.
+  </p>
+  <p xmlns="">
+    9. Boverket skall efter samråd med Statens energimyndighet och den analysgrupp
+    som bildats tillsammans med branschen följa upp och utvärdera stöden för
+    installation av solvärme. Boverket skall senast den 15 mars 2006 redovisa
+    förslag till utformning av ett kompletterande stöd för installation av solvärme
+    i större tillämpningar för eget värmebehov avseende kommersiella lokaler samt
+    för offentliga lokaler efter 2006. Stöden skall finansieras inom en ram om
+    50 miljoner kronor under 2006-2010. Boverket skall efter samråd med Statens
+    energimyndighet vidare lämna förslag till en samlad utformning och inriktning
+    av ett fortsatt solvärmestöd för såväl små som storskaliga tillämpningar från
+    2008 och förslag till en långsiktig strategi för marknadsintroduktion av
+    solvärme. Förslag till hur befintliga stödformer för installation av solvärme
+    bör samordnas skall också lämnas. Uppdraget skall redovisas till regeringen
+    senast den 31 december 2006.
+  </p>
+  <p xmlns="">
+    10. Regeringen gav Boverket i regleringsbrevet för 2005 ett uppdrag till
+    Boverkets Byggkostnadsforum, uppdrag 9. under övriga mål, att sprida kunskaper
+    och erfarenheter om bostadsbyggande i länderna i regionen för den nordliga
+    dimensionen. På grund av ändrade förutsättningar förändrar regeringen
+    innehållet i det uppdraget enligt följande.
+  </p>
+  <p xmlns="">
+    I samarbete med länderna i regionen för den nordliga dimensionenskall Boverket
+    genomföra en kartläggning av ländernas initiativ,statliga eller andra, som
+    syftar till att skapa en bättre konkurrens påbyggområdet vilket kan påverka
+    byggkostnader och bidra till minskadeboendekostnader. Denna kartläggning
+    skall utgöra ett första steg i detsvenska delprojektet i den av Nordiska rådets
+    antagna handlingsplan för detnordisk-baltisk-polska samarbetet på byggområdet.
+    Det svenskadelprojektet syftar till att sprida goda exempel och utbyta
+    erfarenheterom husbyggnad. Uppdraget skall redovisas till regeringen senast
+    den 30 december 2006.
+  </p>
+</div>
+<h3 class="italic" xmlns="http://www.w3.org/1999/xhtml">
+  Uppdrag där Boverket är samverkanspart
+</h3>
+<div class="Start2mm" xmlns="http://www.w3.org/1999/xhtml">
+  <p xmlns="">
+    1. Boverket skall på anmodan bistå den nationella bostadssamordnaren,
+    vars uppgift är att under perioden 2005-2007 arbeta för att ta fram förslag
+    på konkreta åtgärder för att underlätta ungdomars tillträde på bostadsmarknaden.
+  </p>
+  <p xmlns="">
+    2. Boverket skall vara samverkanspart i de regionala tillväxtprogrammen
+    genom att bidra med analys-, metod, och kompetensstöd inom sitt ansvars-
+    och kompetensområde. Boverket skall bistå Verket för näringslivsutveckling
+    (NUTEK) med underlag vid uppföljningen av regionala tillväxtprogram avseende
+    verksamhet som har genomförts under 2005.
+  </p>
+  <p xmlns="">
+    3. Boverket skall biträda Regeringskansliet vid Sveriges medverkan i EU:s
+    olika samarbeten om bland annat regional utvecklingsplanering såväl vid
+    olika kommittémöten som nationellt.
+  </p>
+  <p xmlns="">
+    4. En arbetsgrupp har tillsatts inom Regeringskansliet inför UN-HABITATs
+    konferens World Urban Forum III i Kanada den 19-23 juni 2006. Boverket skall
+    bistå arbetsgruppen i förberedelsearbetet inför denna konferens.
+  </p>
+  <p xmlns="">
+    5. Boverket skall på anmodan bistå den utredare som fått i uppdrag att se
+    över allmännyttans villkor och förutsättningar.
+  </p>
+  <p xmlns=""> 
+  </p>
+</div>
+<h3 class="italic" xmlns="http://www.w3.org/1999/xhtml">
+  Pågående uppdrag                                                  <----Annan nyckelrubrik
+</h3>
+<div class="Start2mm" xmlns="http://www.w3.org/1999/xhtml">
+  <p xmlns="">
+    Uppdragen har lämnats i tidigare regleringsbrev (Rb) eller i särskilda
+    regeringsbeslut (R). Angivet årtal avser slutredovisning av uppdraget.
+  </p>
+  <p xmlns="">
+    - Medverka i Designåret 2005, mars 2006, R
+  </p>
+  <p xmlns="">
+    - Redovisa i vilken grad samhällsplaneringen för en hållbar utveckling i
+    Sveriges kustområden överensstämmer med EU:s rekommendationer för integrerad
+    kustzonsförvaltning (ICZM), januari 2006, R
+  </p>
+  <p xmlns="">
+    - Utarbeta nya riktlinjer för kommunernas vattenplanering, mars 2006, Rb
+  </p>
+  <p xmlns="">
+    - Driva ett sekretariat för Bygga-bo-dialogen för samordning, uppföljning,
+    utvärdering och information samt för att genomföra ett
+    kompetensutvecklingsprogram för sektorn, december 2006, R
+  </p>
+  <p xmlns="">
+    - Utvärdering av verkets verksamhet inklusive föreskrifter med avseende på
+    konsumentperspektivet, december 2006, Rb
+  </p>
+  <p xmlns="">
+    - Driva Byggkostnadsforum (BKF), 2007, R
+  </p>
+  <p xmlns="">
+    - Beredning av projekt inför beslut om stöd till klimatinvesteringar,
+    KLIMP, 2007, R
+  </p>
+</div><!--
+************************ END output av uppdrag delavsnitt med uppdrag.xslt ************************
+
+
+
+
+
+--------------------Vad extrahera från återrapportering?-------------------
+Briställig/väldigt blandad struktur på återrapportering.
+
+Vissa innehåller mål och återrapporteringskrav från regleringsbrev (exempel 2010_Datainspektionen_2021000050.html)
+
+Rekommenderad struktur verkar vara att samma rubriker för verksamhetsområden ska finnas som i regleringsbrev.
+Exempel 2008/2009 Specialpedagogiska skolmyndigheten.
+
+Men det finns ingen garanti för detta.
+Exempel 2008/2009 Spelinspektionen. Rubriker överensstämmer ej.
+
+Min uppfattning: Svårt att koppla mål till specifik del av rapport.
