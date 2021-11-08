@@ -1,7 +1,0 @@
-# Compiled class file
-*.class
-
-# Intellij, Maven config
-.idea/
-target/
-
